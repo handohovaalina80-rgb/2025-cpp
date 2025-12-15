@@ -1,0 +1,25 @@
+#include<stdio.h>
+
+int main(int argc, char** argv)
+{
+std::ifstream inputFile("INPUT.TXT");
+    std::ofstream outputFile("OUTPUT.TXT");
+     
+    double X;
+    double Y;
+     
+    inputFile >> X;
+    inputFile >> Y;
+     
+    int day = 1;
+    double distance = X;
+     
+    while (distance < Y) {
+        distance = distance * 1.15;
+        day = day + 1;
+    }
+     
+    outputFile << day;
+     
+    return 0;
+}
