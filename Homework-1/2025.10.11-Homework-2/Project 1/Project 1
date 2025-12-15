@@ -1,0 +1,32 @@
+#include<stdio.h>
+
+int main(int argc, char** argv)
+{
+    std::ifstream inputFile("INPUT.TXT");
+    std::ofstream outputFile("OUTPUT.TXT");
+     
+    int x1, y1, x2, y2;
+    inputFile >> x1 >> y1 >> x2 >> y2;
+     
+    bool valid = false;
+     
+    if (x1 == x2) {
+        if (y1 == 2) {
+            if (y2 == 3 || y2 == 4) {
+                valid = true;
+            }
+        } else {
+            if (y2 == y1 + 1) {
+                valid = true;
+            }
+        }
+    }
+     
+    if (valid) {
+        outputFile << "YES";
+    } else {
+        outputFile << "NO";
+    }
+     
+    return 0;
+}
