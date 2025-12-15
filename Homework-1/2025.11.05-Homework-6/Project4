@@ -1,3 +1,30 @@
 #include<stdio.h>
 
 int main(int argc, char** argv)
+{
+    std::ifstream inputFile("INPUT.TXT");
+    std::ofstream outputFile("OUTPUT.TXT");
+    
+    int N;
+    inputFile >> N;
+    
+    int* array = new int[N];
+    
+    for (int i = 0; i < N; i++) {
+        inputFile >> array[i];
+    }
+    
+    int count = 0;
+    
+    for (int i = 1; i < N; i++) {
+        if (array[i] > array[i - 1]) {
+            count = count + 1;
+        }
+    }
+    
+    outputFile << count;
+    
+    delete[] array;
+    return 0;
+}
+
