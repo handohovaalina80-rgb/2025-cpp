@@ -1,3 +1,37 @@
 #include<stdio.h>
 
 int main(int argc, char** argv)
+{
+    int n;
+    std::cin >> n;
+    
+    long double sumMath = 0.0;
+    long double sumPhysics = 0.0;
+    long double sumInformatics = 0.0;
+    
+    for (int i = 0; i < n; i++) {
+        std::string firstName;
+        std::string lastName;
+        int math;
+        int physics;
+        int informatics;
+        
+        std::cin >> lastName;
+        std::cin >> firstName;
+        std::cin >> math;
+        std::cin >> physics;
+        std::cin >> informatics;
+        
+        sumMath = sumMath + math;
+        sumPhysics = sumPhysics + physics;
+        sumInformatics = sumInformatics + informatics;
+    }
+    
+    long double avgMath = sumMath / n;
+    long double avgPhysics = sumPhysics / n;
+    long double avgInformatics = sumInformatics / n;
+    
+    std::cout << std::fixed << std::setprecision(6) << avgMath << " " << avgPhysics << " " << avgInformatics;
+    
+    return 0;
+}
