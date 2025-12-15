@@ -1,3 +1,36 @@
 include<stdio.h>
 
 int main(int argc, char** argv)
+{
+    std::ifstream inputFile("INPUT.TXT");
+    std::ofstream outputFile("OUTPUT.TXT");
+     
+    int N;
+    inputFile >> N;
+     
+    int* A = new int[N];
+     
+    for (int i = 0; i < N; i++) {
+        inputFile >> A[i];
+    }
+     
+    int L;
+    int R;
+    inputFile >> L;
+    inputFile >> R;
+     
+    int maxValue = A[L - 1];
+    int maxIndex = L;
+     
+    for (int i = L; i <= R; i++) {
+        if (A[i - 1] > maxValue) {
+            maxValue = A[i - 1];
+            maxIndex = i;
+        }
+    }
+     
+    outputFile << maxValue << " " << maxIndex;
+     
+    delete[] A;
+    return 0;
+}
