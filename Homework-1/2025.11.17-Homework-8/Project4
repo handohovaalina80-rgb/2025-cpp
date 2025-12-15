@@ -1,3 +1,23 @@
 #include<stdio.h>
 
 int main(int argc, char** argv)
+{
+    return S1 == S2;
+}
+
+int main() {
+    std::string S1;
+    std::string S2;
+    
+    std::cin >> S1;
+    std::cin >> S2;
+    
+    if (Compare(S1, S2)) {
+        std::cout << "yes";
+    } else {
+        std::cout << "no";
+    }
+    
+    return 0;
+}
+
