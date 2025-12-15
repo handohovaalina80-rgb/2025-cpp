@@ -1,3 +1,30 @@
 #include<stdio.h>
 
 int main(int argc, char** argv)
+{
+    std::string line;
+    std::getline(std::cin, line);
+    
+    std::string longestWord = "";
+    std::string currentWord = "";
+    int maxLength = 0;
+    
+    line = line + " ";
+    
+    for (size_t i = 0; i < line.length(); i++) {
+        if (line[i] != ' ') {
+            currentWord = currentWord + line[i];
+        } else {
+            if (currentWord.length() > maxLength) {
+                maxLength = currentWord.length();
+                longestWord = currentWord;
+            }
+            currentWord = "";
+        }
+    }
+    
+    std::cout << longestWord << std::endl;
+    std::cout << maxLength;
+    
+    return 0;
+}
