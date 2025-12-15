@@ -1,0 +1,39 @@
+#include<stdio.h>
+
+int main(int argc, char** argv)
+{
+    std::ifstream inputFile("INPUT.TXT");
+    std::ofstream outputFile("OUTPUT.TXT");
+     
+    long long A;
+    long long B;
+    long long C;
+    long long D;
+     
+    inputFile >> A;
+    inputFile >> B;
+    inputFile >> C;
+    inputFile >> D;
+     
+    bool firstRoot = true;
+    bool hasOutput = false;
+     
+    for (int x = -100; x <= 100; x++) {
+        long long result = A * x * x * x + B * x * x + C * x + D;
+         
+        if (result == 0) {
+            if (!firstRoot) {
+                outputFile << " ";
+            }
+            outputFile << x;
+            firstRoot = false;
+            hasOutput = true;
+        }
+    }
+     
+    if (!hasOutput) {
+        outputFile << "";
+    }
+     
+    return 0;
+}
