@@ -1,3 +1,26 @@
 #include<stdio.h>
 
 int main(int argc, char** argv)
+{
+int n=0; 
+int from=0;
+int to=0;
+int temp=0;
+    if (n == 1) {
+        std::cout << "Disk 1 move from " << from << " to " << to << std::endl;
+        return;
+    }
+    
+    hanoi(n - 1, from, temp, to);
+    std::cout << "Disk " << n << " move from " << from << " to " << to << std::endl;
+    hanoi(n - 1, temp, to, from);
+}
+
+int main() {
+    int n;
+    std::cin >> n;
+    
+    hanoi(n, 1, 2, 3);
+    
+    return 0;
+}
