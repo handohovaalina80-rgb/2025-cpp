@@ -1,0 +1,33 @@
+#include<stdio.h>
+
+int main(int argc, char** argv)
+{
+    std::ifstream inputFile("INPUT.TXT");
+    std::ofstream outputFile("OUTPUT.TXT");
+     
+    long long a;
+    long long b;
+     
+    inputFile >> a;
+    inputFile >> b;
+     
+    // Сохраняем оригинальные значения для вычисления НОК
+    long long tempA = a;
+    long long tempB = b;
+     
+    // Вычисляем НОД алгоритмом Евклида
+    while (tempB != 0) {
+        long long remainder = tempA % tempB;
+        tempA = tempB;
+        tempB = remainder;
+    }
+     
+    long long gcd = tempA;
+     
+    // Вычисляем НОК по формуле: НОК(a, b) = a * b / НОД(a, b)
+    long long lcm = a / gcd * b;
+     
+    outputFile << lcm;
+     
+    return 0;
+}
