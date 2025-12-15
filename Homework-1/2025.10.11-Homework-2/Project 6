@@ -1,0 +1,59 @@
+#include<stdio.h>
+
+int main(int argc, char** argv)
+{
+    std::ifstream inputFile("INPUT.TXT");
+    std::ofstream outputFile("OUTPUT.TXT");
+    
+    int a1;
+    int b1;
+    int c1;
+    int a2;
+    int b2;
+    int c2;
+    
+    inputFile >> a1;
+    inputFile >> b1;
+    inputFile >> c1;
+    inputFile >> a2;
+    inputFile >> b2;
+    inputFile >> c2;
+    
+    int sides1[3];
+    int sides2[3];
+    
+    sides1[0] = a1;
+    sides1[1] = b1;
+    sides1[2] = c1;
+    
+    sides2[0] = a2;
+    sides2[1] = b2;
+    sides2[2] = c2;
+    
+    std::sort(sides1, sides1 + 3);
+    std::sort(sides2, sides2 + 3);
+    
+    bool firstFitsInSecond = true;
+    bool secondFitsInFirst = true;
+    
+    for (int i = 0; i < 3; i++) {
+        if (sides1[i] > sides2[i]) {
+            firstFitsInSecond = false;
+        }
+        if (sides2[i] > sides1[i]) {
+            secondFitsInFirst = false;
+        }
+    }
+    
+    if (firstFitsInSecond && secondFitsInFirst) {
+        outputFile << "Boxes are equal";
+    } else if (firstFitsInSecond) {
+        outputFile << "The first box is smaller than the second one";
+    } else if (secondFitsInFirst) {
+        outputFile << "The first box is larger than the second one";
+    } else {
+        outputFile << "Boxes are incomparable";
+    }
+    
+    return 0;
+}
