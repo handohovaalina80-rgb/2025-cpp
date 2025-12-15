@@ -1,3 +1,28 @@
 #include<stdio.h>
 
 int main(int argc, char** argv)
+{
+    double a=0;
+    int n=0;
+    double result = 1.0;
+    
+    for (int i = 0; i < n; i++) {
+        result = result * a;
+    }
+    
+    return result;
+}
+
+int main() {
+    double a;
+    int n;
+    
+    std::cin >> a;
+    std::cin >> n;
+    
+    double result = power(a, n);
+    
+    std::cout << result;
+    
+    return 0;
+}
