@@ -1,3 +1,25 @@
 #include<stdio.h>
 
 int main(int argc, char** argv)
+{
+    std::string line;
+    std::getline(std::cin, line);
+    
+    int wordCount = 0;
+    bool inWord = false;
+    
+    for (size_t i = 0; i < line.length(); i++) {
+        if (line[i] != ' ') {
+            if (!inWord) {
+                wordCount = wordCount + 1;
+                inWord = true;
+            }
+        } else {
+            inWord = false;
+        }
+    }
+    
+    std::cout << wordCount;
+    
+    return 0;
+}
