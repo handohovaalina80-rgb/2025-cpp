@@ -1,0 +1,31 @@
+#include<stdio.h>
+
+int main(int argc, char** argv)
+{
+    std::ifstream inputFile("INPUT.TXT");
+    std::ofstream outputFile("OUTPUT.TXT");
+     
+    int N;
+    inputFile >> N;
+     
+    int currentStreak = 0;
+    int maxStreak = 0;
+    int temperature;
+     
+    for (int i = 0; i < N; i++) {
+        inputFile >> temperature;
+         
+        if (temperature > 0) {
+            currentStreak = currentStreak + 1;
+            if (currentStreak > maxStreak) {
+                maxStreak = currentStreak;
+            }
+        } else {
+            currentStreak = 0;
+        }
+    }
+     
+    outputFile << maxStreak;
+     
+    return 0;
+}
