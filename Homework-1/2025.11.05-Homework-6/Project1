@@ -1,3 +1,30 @@
 #include<stdio.h>
 
 int main(int argc, char** argv)
+{
+    std::ifstream inputFile("INPUT.TXT");
+    std::ofstream outputFile("OUTPUT.TXT");
+    
+    int N;
+    inputFile >> N;
+    
+    int* array = new int[N];
+    
+    for (int i = 0; i < N; i++) {
+        inputFile >> array[i];
+    }
+    
+    bool firstElement = true;
+    for (int i = 0; i < N; i = i + 2) {
+        if (!firstElement) {
+            outputFile << " ";
+        }
+        outputFile << array[i];
+        firstElement = false;
+    }
+    
+    delete[] array;
+    return 0;
+}
+
+
