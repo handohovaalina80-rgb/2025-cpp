@@ -1,0 +1,37 @@
+include<stdio.h>
+
+int main(int argc, char** argv)
+{
+    std::ifstream inputFile("INPUT.TXT");
+    std::ofstream outputFile("OUTPUT.TXT");
+     
+    int N;
+    inputFile >> N;
+     
+    int count = 0;
+    int currentNumber;
+    int X;
+     
+    for (int i = 0; i < N; i++) {
+        inputFile >> currentNumber;
+    }
+     
+    inputFile >> X;
+     
+    // Возвращаемся к началу чтения массива
+    inputFile.clear();
+    inputFile.seekg(0, std::ios::beg);
+     
+    inputFile >> N; // Пропускаем первое число
+     
+    for (int i = 0; i < N; i++) {
+        inputFile >> currentNumber;
+        if (currentNumber == X) {
+            count = count + 1;
+        }
+    }
+     
+    outputFile << count;
+     
+    return 0;
+}
