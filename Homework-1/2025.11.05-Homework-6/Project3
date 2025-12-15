@@ -1,3 +1,26 @@
 #include<stdio.h>
 
 int main(int argc, char** argv)
+{
+    std::ifstream inputFile("INPUT.TXT");
+    std::ofstream outputFile("OUTPUT.TXT");
+    
+    int N;
+    inputFile >> N;
+    
+    int* array = new int[N];
+    
+    int positiveCount = 0;
+    
+    for (int i = 0; i < N; i++) {
+        inputFile >> array[i];
+        if (array[i] > 0) {
+            positiveCount = positiveCount + 1;
+        }
+    }
+    
+    outputFile << positiveCount;
+    
+    delete[] array;
+    return 0;
+}
