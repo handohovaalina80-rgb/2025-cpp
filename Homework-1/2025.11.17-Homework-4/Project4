@@ -1,3 +1,38 @@
 include<stdio.h>
 
 int main(int argc, char** argv)
+{
+    std::ifstream inputFile("INPUT.TXT");
+    std::ofstream outputFile("OUTPUT.TXT");
+     
+    int N;
+    inputFile >> N;
+     
+    int* A = new int[N];
+     
+    for (int i = 0; i < N; i++) {
+        inputFile >> A[i];
+    }
+     
+    int X;
+    inputFile >> X;
+     
+    int closestValue = A[0];
+    int minDifference = abs(A[0] - X);
+     
+    for (int i = 1; i < N; i++) {
+        int currentDifference = abs(A[i] - X);
+         
+        if (currentDifference < minDifference) {
+            minDifference = currentDifference;
+            closestValue = A[i];
+        } else if (currentDifference == minDifference && A[i] < closestValue) {
+            closestValue = A[i];
+        }
+    }
+     
+    outputFile << closestValue;
+     
+    delete[] A;
+    return 0;
+}
