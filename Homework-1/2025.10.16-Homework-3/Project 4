@@ -1,0 +1,37 @@
+#include<stdio.h>
+
+int main(int argc, char** argv)
+{
+    std::ifstream inputFile("INPUT.TXT");
+    std::ofstream outputFile("OUTPUT.TXT");
+     
+    int current;
+    int previous;
+    int count = 0;
+    int maxCount = 0;
+     
+    inputFile >> current;
+     
+    do {
+        if (count == 0) {
+            count = 1;
+            maxCount = 1;
+        } else {
+            if (current == previous) {
+                count = count + 1;
+                if (count > maxCount) {
+                    maxCount = count;
+                }
+            } else {
+                count = 1;
+            }
+        }
+         
+        previous = current;
+        inputFile >> current;
+    } while (current != 0);
+     
+    outputFile << maxCount;
+     
+    return 0;
+}
