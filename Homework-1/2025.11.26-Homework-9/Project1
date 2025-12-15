@@ -1,3 +1,36 @@
 #include<stdio.h>
 
 int main(int argc, char** argv)
+struct Point {
+    int x;
+    int y;
+};
+
+int main() {
+    int n;
+    std::cin >> n;
+    
+    Point* points = new Point[n];
+    
+    for (int i = 0; i < n; i++) {
+        std::cin >> points[i].x;
+        std::cin >> points[i].y;
+    }
+    
+    int maxDistance = 0;
+    int maxIndex = 0;
+    
+    for (int i = 0; i < n; i++) {
+        int distance = points[i].x * points[i].x + points[i].y * points[i].y;
+        if (distance > maxDistance) {
+            maxDistance = distance;
+            maxIndex = i;
+        }
+    }
+    
+    std::cout << points[maxIndex].x << " " << points[maxIndex].y;
+    
+    delete[] points;
+    return 0;
+}
+
