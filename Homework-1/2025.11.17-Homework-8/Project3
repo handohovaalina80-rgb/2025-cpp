@@ -1,3 +1,22 @@
 #include<stdio.h>
 
 int main(int argc, char** argv)
+{
+    if (c >= 'a' && c <= 'z') {
+        return c - 32;
+    } else if (c >= 'A' && c <= 'Z') {
+        return c + 32;
+    }
+    return c;
+}
+
+int main() {
+    unsigned char c;
+    std::cin >> c;
+    
+    unsigned char result = ChangeCase(c);
+    
+    std::cout << result;
+    
+    return 0;
+}
