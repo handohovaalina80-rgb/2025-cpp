@@ -1,0 +1,72 @@
+#include<stdio.h>
+
+int main(int argc, char** argv)
+{
+    std::ifstream inputFile("INPUT.TXT");
+    std::ofstream outputFile("OUTPUT.TXT");
+    
+    int a;
+    int b;
+    int c;
+    
+    inputFile >> a;
+    inputFile >> b;
+    inputFile >> c;
+    
+    std::string result = "";
+    std::string part;
+    bool hasPrevious = false;
+    
+    // Обработка постоянного члена a
+    if (a != 0) {
+        result += std::to_string(a);
+        hasPrevious = true;
+    }
+    
+    // Обработка члена с x (b)
+    if (b != 0) {
+        if (b > 0) {
+            if (hasPrevious) {
+                result += "+";
+            }
+        } else {
+            result += "-";
+        }
+        
+        int absB = std::abs(b);
+        if (absB != 1) {
+            result += std::to_string(absB);
+        }
+        
+        result += "x";
+        hasPrevious = true;
+    }
+    
+    // Обработка члена с y (c)
+    if (c != 0) {
+        if (c > 0) {
+            if (hasPrevious) {
+                result += "+";
+            }
+        } else {
+            result += "-";
+        }
+        
+        int absC = std::abs(c);
+        if (absC != 1) {
+            result += std::to_string(absC);
+        }
+        
+        result += "y";
+        hasPrevious = true;
+    }
+    
+    // Если все коэффициенты равны 0
+    if (a == 0 && b == 0 && c == 0) {
+        result = "0";
+    }
+    
+    outputFile << result;
+    
+    return 0;
+}
