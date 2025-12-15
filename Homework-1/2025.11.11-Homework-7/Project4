@@ -1,3 +1,40 @@
 #include<stdio.h>
 
 int main(int argc, char** argv)
+{
+    long long n=0;
+    if (n < 2) {
+        return false;
+    }
+    
+    if (n == 2) {
+        return true;
+    }
+    
+    if (n % 2 == 0) {
+        return false;
+    }
+    
+    long long limit = sqrt(n);
+    for (long long i = 3; i <= limit; i = i + 2) {
+        if (n % i == 0) {
+            return false;
+        }
+    }
+    
+    return true;
+}
+
+int main() {
+    long long n;
+    std::cin >> n;
+    
+    if (isPrime(n)) {
+        std::cout << "prime";
+    } else {
+        std::cout << "composite";
+    }
+    
+    return 0;
+}
+
