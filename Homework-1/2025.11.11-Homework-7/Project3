@@ -1,3 +1,36 @@
 #include<stdio.h>
 
 int main(int argc, char** argv)
+{
+    bool x=0;
+    bool y=0;
+    bool z=0;
+    int countTrue = 0;
+    
+    if (x) countTrue = countTrue + 1;
+    if (y) countTrue = countTrue + 1;
+    if (z) countTrue = countTrue + 1;
+    
+    return countTrue > 1;
+}
+
+int main() {
+    int x_int;
+    int y_int;
+    int z_int;
+    
+    std::cin >> x_int;
+    std::cin >> y_int;
+    std::cin >> z_int;
+    
+    bool x = x_int != 0;
+    bool y = y_int != 0;
+    bool z = z_int != 0;
+    
+    bool result = Election(x, y, z);
+    
+    std::cout << result;
+    
+    return 0;
+}
+
