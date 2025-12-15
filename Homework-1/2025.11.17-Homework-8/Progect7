@@ -1,3 +1,29 @@
 #include<stdio.h>
 
 int main(int argc, char** argv)
+{
+    std::string str;
+    std::cin >> str;
+    
+    int left = 0;
+    int right = str.length() - 1;
+    bool isPalindrome = true;
+    
+    while (left < right) {
+        if (str[left] != str[right]) {
+            isPalindrome = false;
+            break;
+        }
+        left = left + 1;
+        right = right - 1;
+    }
+    
+    if (isPalindrome) {
+        std::cout << "yes";
+    } else {
+        std::cout << "no";
+    }
+    
+    return 0;
+}
+
