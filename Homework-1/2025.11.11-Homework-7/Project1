@@ -1,3 +1,41 @@
 #include<stdio.h>
 
 int main(int argc, char** argv)
+{
+    int a=0; 
+    int b=0; int c=0;
+    int d=0;
+    int min1 = a;
+    
+    if (b < min1) {
+        min1 = b;
+    }
+    if (c < min1) {
+        min1 = c;
+    }
+    if (d < min1) {
+        min1 = d;
+    }
+    
+    return min1;
+}
+
+int main() {
+    int a;
+    int b;
+    int c;
+    int d;
+    
+    std::cin >> a;
+    std::cin >> b;
+    std::cin >> c;
+    std::cin >> d;
+    
+    int result = min(a, b, c, d);
+    
+    std::cout << result;
+    
+    return 0;
+}
+
+
