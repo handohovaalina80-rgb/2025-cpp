@@ -1,3 +1,44 @@
 include<stdio.h>
 
 int main(int argc, char** argv)
+{
+    std::ifstream inputFile("INPUT.TXT");
+    std::ofstream outputFile("OUTPUT.TXT");
+     
+    int N;
+    inputFile >> N;
+     
+    int* grades = new int[N];
+     
+    for (int i = 0; i < N; i++) {
+        inputFile >> grades[i];
+    }
+     
+    int minGrade = grades[0];
+    int maxGrade = grades[0];
+     
+    for (int i = 1; i < N; i++) {
+        if (grades[i] < minGrade) {
+            minGrade = grades[i];
+        }
+        if (grades[i] > maxGrade) {
+            maxGrade = grades[i];
+        }
+    }
+     
+    bool first = true;
+    for (int i = 0; i < N; i++) {
+        if (!first) {
+            outputFile << " ";
+        }
+        if (grades[i] == maxGrade) {
+            outputFile << minGrade;
+        } else {
+            outputFile << grades[i];
+        }
+        first = false;
+    }
+     
+    delete[] grades;
+    return 0;
+}
