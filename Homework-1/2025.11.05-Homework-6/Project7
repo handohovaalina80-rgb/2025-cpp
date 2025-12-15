@@ -1,0 +1,37 @@
+#include<stdio.h>
+
+int main(int argc, char** argv)
+{
+    std::ifstream inputFile("INPUT.TXT");
+    std::ofstream outputFile("OUTPUT.TXT");
+    
+    int N;
+    inputFile >> N;
+    
+    int* array = new int[N];
+    
+    for (int i = 0; i < N; i++) {
+        inputFile >> array[i];
+    }
+    
+    int left = 0;
+    int right = N - 1;
+    
+    while (left < right) {
+        int temp = array[left];
+        array[left] = array[right];
+        array[right] = temp;
+        left = left + 1;
+        right = right - 1;
+    }
+    
+    for (int i = 0; i < N; i++) {
+        outputFile << array[i];
+        if (i != N - 1) {
+            outputFile << " ";
+        }
+    }
+    
+    delete[] array;
+    return 0;
+}
