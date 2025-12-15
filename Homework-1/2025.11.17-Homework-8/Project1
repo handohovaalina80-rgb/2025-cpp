@@ -1,3 +1,15 @@
 #include<stdio.h>
 
 int main(int argc, char** argv)
+{
+    unsigned char c;
+    std::cin >> c;
+    
+    if (IsDigit(c)) {
+        std::cout << "yes";
+    } else {
+        std::cout << "no";
+    }
+    
+    return 0;
+}
