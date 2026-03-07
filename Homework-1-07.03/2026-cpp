@@ -1,0 +1,287 @@
+#include<iostream>
+#include<cstdio>
+  
+class ArrayList {
+public:
+ double* data;
+ int size;
+ int capacity;
+
+ ArrayList() { // Constructor
+  size = 0;
+  capacity = 4;
+  data = new double[capacity];
+ }
+
+ ~ArrayList() {  //destructor
+  delete[] data;
+ }
+
+ void resize(int new_capacity) {
+  double* new_data = new double[new_capacity];
+  for (int i = 0; i < size; i++) {
+   new_data[i] = data[i];
+  }
+  delete[] data;
+  data = new_data;
+  capacity = new_capacity;
+ }
+
+ void add(double value) {
+  if (size == capacity) {
+   resize(capacity * 2);
+  }
+  data[size] = value;
+  size++;
+ }
+
+ double get(int index) {
+  if (index < 0 || index >= size) {
+   printf("Ошибка: индекс %d вне [0;%d)\n", index, size);
+   return 0.0;
+  }
+  return data[index];
+ }
+
+ void set(int index, double value) {
+  if (index < 0 || index >= size) {
+   printf("Ошибка: индекс %d вне [0;%d)\n", index, size);
+   return;
+  }
+  data[index] = value;
+ }
+
+ int getSize() {
+  return size;
+ }
+
+ void remove(int index) {
+  if (index < 0 || index >= size) {
+   printf("Ошибка: индекс %d вне диапазона\n", index);
+   return;
+  }
+  for (int i = index; i < size - 1; i++) {
+   data[i] = data[i + 1];
+  }
+  --size;
+ }
+
+ void print() {
+  for (int i = 0; i < size; i++) {
+   printf("%.2f ", data[i]);
+  }
+  printf("\n");
+ }
+};
+
+  int main(int argc, char** argv)
+  {
+   ArrayList list;
+   list.add(3.14);
+   list.add(2.71);
+   double x = list.get(0);
+   list.set(1, 9.99);
+   list.remove(0);
+   int n = list.getSize();
+   list.print();                 
+   return 0;
+  }
+#include<iostream>
+
+#include<cstdio>
+
+
+
+class ArrayList {
+
+public:
+
+  double* data;
+
+  int size;
+
+  int capacity;
+
+
+
+  ArrayList() { // Constructor
+
+    size = 0;
+
+    capacity = 4;
+
+    data = new double[capacity];
+
+  }
+
+
+
+  ~ArrayList() {  //destructor
+
+    delete[] data;
+
+  }
+
+
+
+  void resize(int new_capacity) {
+
+    double* new_data = new double[new_capacity];
+
+    for (int i = 0; i < size; i++) {
+
+      new_data[i] = data[i];
+
+    }
+
+    delete[] data;
+
+    data = new_data;
+
+    capacity = new_capacity;
+
+  }
+
+
+
+  void add(double value) {
+
+    if (size == capacity) {
+
+      resize(capacity * 2);
+
+    }
+
+    data[size] = value;
+
+    size++;
+
+  }
+
+
+
+  double get(int index) {
+
+    if (index < 0 || index >= size) {
+
+      printf("Ошибка: индекс %d вне [0;%d)\n", index, size);
+
+      return 0.0;
+
+    }
+
+    return data[index];
+
+  }
+
+
+
+  void set(int index, double value) {
+
+    if (index < 0 || index >= size) {
+
+      printf("Ошибка: индекс %d вне [0;%d)\n", index, size);
+
+      return;
+
+    }
+
+    data[index] = value;
+
+  }
+
+
+
+  int getSize() {
+
+    return size;
+
+  }
+
+
+
+  void remove(int index) {
+
+    if (index < 0 || index >= size) {
+
+      printf("Ошибка: индекс %d вне диапазона\n", index);
+
+      return;
+
+    }
+
+    for (int i = index; i < size - 1; i++) {
+
+      data[i] = data[i + 1];
+
+    }
+
+    --size;
+
+  }
+
+
+
+  void print() {
+
+    for (int i = 0; i < size; i++) {
+
+      printf("%.2f ", data[i]);
+
+    }
+
+    printf("\n");
+
+  }
+
+  void insert(int index, double value) {
+
+    if (index < 0 || index > size) {
+
+      printf("Ошибка: индекс %d вне [0;%d] для вставки\n", index, size);
+
+      return;
+
+    }
+
+    if (size == capacity) {
+
+      resize(capacity * 2);
+
+    }
+
+    for (int i = size; i > index; i--) {
+
+      data[i] = data[i - 1];
+
+    }
+
+    data[index] = value;
+
+    size++;
+
+  }
+
+  void clear() {
+
+    size = 0;
+
+  }
+
+  bool contains(double value) {
+
+    for (int i = 0; i < size; i++) {
+
+      if (data[i] == value) {
+
+        return true;
+
+      }
+
+    }
+
+    return false;
+
+  }
+
+}
